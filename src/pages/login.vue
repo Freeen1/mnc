@@ -1,14 +1,14 @@
 <template>
     <el-row class="login-container">
-        <el-col :md="0" :lg="0" :xl="3"></el-col>
-        <el-col :md="12" :lg="12" :xl="8" class="left">
+        <el-col :md="1" :lg="1" :xl="3"></el-col>
+        <el-col :md="8" :lg="10" :xl="8" class="left">
             <el-card class="row">
                 <div>
 
                 </div>
             </el-card>
         </el-col>
-        <el-col :md="9" :lg="8" :xl="8" class="right">
+        <el-col :md="8" :lg="10" :xl="8" class="right">
             <h2 class="tltle-h2">Hi, 欢迎回来<br/>今天准备好上课了吗？</h2>
             <el-form :model="form" class="login-form">
                 <el-form-item>
@@ -53,7 +53,7 @@
                 </el-space>
             </div>
         </el-col>
-        <el-col :md="3" :lg="4" :xl="2" class="right">
+        <el-col :md="3" :lg="2" :xl="2" class="right">
             <el-text class="mb-6 text-zinc-800" tag="b"> 其他方式 </el-text>
             <el-card shadow="hover" class="text-center flex justify-center items-center box-card w-[120px] h-[80px] mb-4 bg-zinc-100 border-0">
                 <el-icon style="vertical-align: middle"><Cellphone /></el-icon>
@@ -66,7 +66,7 @@
                 <el-text class="text-zinc-800" tag="b"> 联系管理员 </el-text>
             </el-card>
         </el-col>
-        <el-col :md="0" :lg="0" :xl="3"></el-col>
+        <el-col :md="1" :lg="1" :xl="3"></el-col>
     </el-row>
 </template>
 

@@ -25,7 +25,7 @@
 
 </script>
 
-<style>
+<style scoped>
     .username {
         text-align: left;
         @apply ml-4 ;

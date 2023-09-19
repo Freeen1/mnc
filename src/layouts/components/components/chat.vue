@@ -130,6 +130,14 @@ export default {
         overflow-y: auto;
         /* @apply flex  items-center flex-col ; */
     }
+    .messagelist::-webkit-scrollbar {
+        width: 0.1em; /* 设置滚动条的宽度为极小值 */
+        background-color: transparent; /* 将滚动条的背景色设置为透明 */
+    }
+
+    .messagelist::-webkit-scrollbar-thumb {
+        background-color: transparent; /* 将滑块的背景色设置为透明 */
+    }
     .Chat-recording {
         max-width: 350px;
         min-height: 40px;

@@ -1,7 +1,7 @@
 <template>
     <div class="w-[400px] h-[715px] bg-[#fff] rounded-3xl p-3">
         <div class="flex items-center h-[55px]">
-            <el-avatar :size="55"  @error="errorHandler">
+            <el-avatar :size="55" >
                 <img src="http://localhost:5173/src/assets/exp3.png" />
             </el-avatar>
             <div class="teachername">
@@ -15,14 +15,16 @@
                 <el-icon size="24px"><Setting /></el-icon>
             </div>
         </div>
-        <div class="messagelist">
+        <div  ref="container" class="messagelist">
             <div v-for="message in messages" :key="message.id" class="flex justify-center items-center flex-col">
                 <div class="Chat-recording" >
                     <span class="Chat-text">
                         {{ message.text }}
                     </span>
                 </div>
-                <span>{{ currentDate }}</span>
+                <span class="time">
+                        {{ message.timeid }}
+                </span>
             </div>
             <div>
 
@@ -49,8 +51,10 @@
         </div>
     </div>
 </template>
+
+
 <script>
-const currentDate = new Date();
+import { ref, onMounted, onUpdated } from 'vue';
 
 
 export default {
@@ -58,26 +62,50 @@ export default {
         return {
             messages: [], // 存储聊天消息的数组
             inputText: '', // 输入框的绑定值
-
-            currentDate: null
+            currentDate: '', //时间 
         };
     },
-    created() {
-        this.currentDate = new Date();
-        this.currentDate = currentDate.toLocaleTimeString();
-    },
+    
     methods: {
+        getTime() {
+            const currentTime = new Date(); // 获取当前时间
+            this.currentDate = currentTime.toLocaleTimeString();
+        },
         sendMessage() {
-            if (this.inputText) {
+            if (this.inputText || event.key === 'Enter') {
+                this.getTime(); // 重新获取最新时间
                 const newMessage = {
                     id: Date.now(),
-                    text: this.inputText
+                    text: this.inputText,
+                    timeid: this.currentDate
                 };
                 this.messages.push(newMessage);
                 this.inputText = ''; // 清空输入框
             }
-        }
-    }
+        },
+    },
+    //默认显示最下面
+    setup() {
+    const container = ref(null);
+
+    onMounted(() => {
+      scrollToBottom();
+    });
+
+    onUpdated(() => {
+      scrollToBottom();
+    });
+
+    const scrollToBottom = () => {
+      if (container.value) {
+        container.value.scrollTop = container.value.scrollHeight;
+      }
+    };
+
+    return {
+      container
+    };
+  }
 };
 </script>
 
@@ -96,8 +124,10 @@ export default {
     }
     .messagelist {
         width: 356px;
-        height: calc(100% - 180px);
+        height: 511px;
+        /* calc(100% - 180px) */
         margin: auto;
+        overflow-y: auto;
         /* @apply flex  items-center flex-col ; */
     }
     .Chat-recording {
@@ -112,6 +142,9 @@ export default {
     }
     .Chat-text {
         @apply ml-auto m-2 text-light-50 ;
+    }
+    .time {
+        @apply ml-auto text-xs text-gray-400;
     }
     .Chat-input textarea {
         width: 100%;

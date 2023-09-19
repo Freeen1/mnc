@@ -1,6 +1,7 @@
 <template>
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center flex-col">
         <!-- <Calendar></Calendar> -->
+        <br/>
         <chat></chat>
 
     </div>

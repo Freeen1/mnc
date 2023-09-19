@@ -6,12 +6,12 @@
       </div>
       <el-container class="">
         <el-header class="h-[65px]"><FHeader></FHeader></el-header>
-        <el-main><FTagList></FTagList></el-main>
+        <el-main class="pt-10"><FTagList></FTagList></el-main>
       </el-container>
       <div class="f-user">
         <el-container>
           <el-header ><UHeader></UHeader></el-header >
-          <el-main><ITagList></ITagList></el-main>
+          <el-main class="pt-10"><ITagList></ITagList></el-main>
         </el-container>
       </div>
     </el-container>

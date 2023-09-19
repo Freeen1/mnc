@@ -16,11 +16,19 @@
             </div>
         </div>
         <div class="messagelist">
-            <div v-for="message in messages" :key="message.id">
-                {{ message.text }}
+            <div v-for="message in messages" :key="message.id" class="flex justify-center items-center flex-col">
+                <div class="Chat-recording" >
+                    <span class="Chat-text">
+                        {{ message.text }}
+                    </span>
+                </div>
+                <span>{{ currentDate }}</span>
+            </div>
+            <div>
+
             </div>
         </div>
-        <div class="h-[125px] bg-[#FBFBFB] rounded-3xl p-3">
+        <div class="h-[125px] rounded-3xl p-3" style="background-color: #FBFBFB;">
             <div class="Chat-input">
                 <!-- <input v-model="inputText" type="text" placeholder="这里输入..."/> -->
                 <textarea v-model="inputText" type="text" placeholder="这里输入..."></textarea>
@@ -42,12 +50,21 @@
     </div>
 </template>
 <script>
+const currentDate = new Date();
+
+
 export default {
     data() {
         return {
             messages: [], // 存储聊天消息的数组
-            inputText: '' // 输入框的绑定值
+            inputText: '', // 输入框的绑定值
+
+            currentDate: null
         };
+    },
+    created() {
+        this.currentDate = new Date();
+        this.currentDate = currentDate.toLocaleTimeString();
     },
     methods: {
         sendMessage() {
@@ -80,17 +97,27 @@ export default {
     .messagelist {
         width: 356px;
         height: calc(100% - 180px);
+        margin: auto;
+        /* @apply flex  items-center flex-col ; */
+    }
+    .Chat-recording {
+        max-width: 350px;
+        min-height: 40px;
+        @apply flex justify-center items-center flex-col rounded-lg  mb-2 mt-2 ml-auto bg-[#3F3F44];
     }
     .Chat-input {
         height: 70px;
         @apply uppercase;
 
     }
+    .Chat-text {
+        @apply ml-auto m-2 text-light-50 ;
+    }
     .Chat-input textarea {
         width: 100%;
         height: 70px;
         resize: none;
-        outline:none;
+        outline: none;
         background-color: #FBFBFB;
     }
     .chat-function {

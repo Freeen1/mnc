@@ -22,7 +22,8 @@
         </div>
         <div class="h-[125px] bg-[#FBFBFB] rounded-3xl p-3">
             <div class="Chat-input">
-                <input v-model="inputText" type="text" placeholder="这里输入..."/>
+                <!-- <input v-model="inputText" type="text" placeholder="这里输入..."/> -->
+                <textarea v-model="inputText" type="text" placeholder="这里输入..."></textarea>
             </div>
             <div class="chat-function">
                 <div class="function">
@@ -85,9 +86,10 @@ export default {
         @apply uppercase;
 
     }
-    .Chat-input input {
+    .Chat-input textarea {
         width: 100%;
         height: 70px;
+        resize: none;
         outline:none;
         background-color: #FBFBFB;
     }

@@ -5,55 +5,65 @@
     </div>
     <el-row class="tac flex justify-center items-center">
         <el-col :span="16">
-            <el-menu default-active="1" class="el-menu-vertical-demo text-dark-900 border-0 ">
-                <el-menu-item index="1">
-                    <el-icon><icon-menu /></el-icon>
-                    <span>仪表盘</span>
-                </el-menu-item>
-                <el-menu-item index="2">
-                    <el-icon><icon-menu /></el-icon>
-                    <span>消息</span>
-                    <!-- <el-badge class="mark" :value="3" /> -->
-                </el-menu-item>
-                <el-menu-item index="3">
-                    <el-icon>
-                        <document />
-                    </el-icon>
-                    <span>我的成绩</span>
-                </el-menu-item>
-                <el-menu-item index="4">
-                    <el-icon>
-                        <setting />
-                    </el-icon>
-                    <span>我的评价</span>
-                </el-menu-item>
-                <el-menu-item index="5">
-                    <el-icon>
-                        <setting />
-                    </el-icon>
-                    <span>我的账户</span>
-                </el-menu-item>
+            <el-menu default-active="1" class="el-menu-vertical-demo text-dark-900 border-0" @select="handleSelect">
+                <template v-for="(item, index) in asideMenus" :key="index">
+                    <el-menu-item :index="item.frontpath">
+                        <el-icon>
+                            <component :is="item.icon"></component>
+                        </el-icon>
+                        <span>{{item.name}}</span>
+                    </el-menu-item>
+                </template>
             </el-menu>
         </el-col>
     </el-row>
 </template>
 
 <script setup>
-import {
-    Document,
-    Menu as IconMenu,
-    Location,
-    Setting,
-} from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const asideMenus = [{
+    name: "仪表盘",
+    icon: "Menu",
+    frontpath: "/"
+}, {
+    name: "消息通知",
+    icon: "ChatDotRound",
+    frontpath: "/chat"
+}, {
+    name: "考勤管理",
+    icon: "Edit",
+    frontpath: "/taam"
+}, {
+    name: "我的成绩",
+    icon: "document",
+    frontpath: "/grades"
+}, {
+    name: "我的评价",
+    icon: "Star",
+    frontpath: "/appraise"
+}, {
+    name: "我的账户",
+    icon: "setting",
+    frontpath: "/account"
+}]
+const handleSelect = (e)=>{
+    router.push(e)
+}
 </script>
 
 
-<style setip>
+<style setup>
+.el-menu-item {
+    @apply rounded-lg;
+}
+
 .el-menu-item.is-active {
-    @apply bg-color-[#CCEABB] rounded-xl;
+    @apply bg-color-[#CCEABB] rounded-lg;
     color: #303133;
 }
+
 .el-menu-item:hover {
     background-color: #fff;
-}
-</style>
+}</style>

@@ -1,15 +1,15 @@
 <template>
     <div class="flex justify-center items-center flex-col">
-        <!-- <Calendar></Calendar> -->
+        <Calendar></Calendar>
         <br/>
-        <chat></chat>
+        <!-- <Chat></Chat> -->
 
     </div>
 </template>
 
 <script setup>
 import Calendar from './components/Calendar.vue'
-import chat from './components/chat.vue'
+import Chat from './components/Chat.vue'
 
 
 </script>

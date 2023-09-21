@@ -4,6 +4,8 @@ import Admin from '~/layouts/admin.vue'
 import Index from '~/pages/index.vue'
 import NotFound from '~/pages/404.vue'
 import Login from '~/pages/login.vue'
+import Chat from '~/layouts/components/components/chat.vue'
+
 
 const routes = [{
     path: "/",
@@ -13,7 +15,37 @@ const routes = [{
         path: "/",
         component:Index,
         meta:{
-            title:"后台首页"
+            title:"后台"
+        }
+    },{
+        path: "/chat",
+        component:Chat,
+        meta:{
+            title:"聊天"
+        }
+    },{
+        path: "/taam",
+        component:Chat,
+        meta:{
+            title:"考勤"
+        }
+    },{
+        path: "/grades",
+        component:Chat,
+        meta:{
+            title:"成绩"
+        }
+    },{
+        path: "/appraise",
+        component:Chat,
+        meta:{
+            title:"评价"
+        }
+    },{
+        path: "/account",
+        component:Chat,
+        meta:{
+            title:"个人"
         }
     }]
 },{
